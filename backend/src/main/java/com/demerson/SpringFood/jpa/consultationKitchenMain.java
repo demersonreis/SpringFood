@@ -13,7 +13,8 @@ public class consultationKitchenMain {
 	public static void main(String[] args) {
 
 		ApplicationContext applicationContext = new SpringApplicationBuilder(SpringFoodApplication.class)
-				.web(WebApplicationType.NONE).run(args);
+				.web(WebApplicationType.NONE)
+				.run(args);
 
 		registrationKitchen registrationKitchen = applicationContext.getBean(registrationKitchen.class);
 
