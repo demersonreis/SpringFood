@@ -22,12 +22,18 @@ public class registrationKitchen {
 	}
 
 	public Kitchen kitchenFindById(Long id) {
-          return manager.find(Kitchen.class, id);
+		return manager.find(Kitchen.class, id);
 	}
 
 	@Transactional
 	public Kitchen newKitchenByUpdate(Kitchen kitchen) {
 		return manager.merge(kitchen);
 
+	}
+    
+	@Transactional
+	public void deleteKitchen(Kitchen kitchen) {
+		kitchen = kitchenFindById(kitchen.getId());
+		manager.remove(kitchen);
 	}
 }
