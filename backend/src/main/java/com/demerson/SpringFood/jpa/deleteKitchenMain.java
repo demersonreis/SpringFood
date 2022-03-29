@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.demerson.SpringFood.SpringFoodApplication;
 import com.demerson.SpringFood.domain.entity.Kitchen;
+import com.demerson.SpringFood.domain.repository.KitchenRepository;
 
 public class deleteKitchenMain {
 	public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class deleteKitchenMain {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(SpringFoodApplication.class)
 				.web(WebApplicationType.NONE).run(args);
 
-		registrationKitchen registrationKitchen = applicationContext.getBean(registrationKitchen.class);
+		KitchenRepository registrationKitchen = applicationContext.getBean(KitchenRepository.class);
 
 		Kitchen kitchen1 = new Kitchen();
 		kitchen1.setId(2L);

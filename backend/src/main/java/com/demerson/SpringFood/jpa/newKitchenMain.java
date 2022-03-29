@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 
 import com.demerson.SpringFood.SpringFoodApplication;
 import com.demerson.SpringFood.domain.entity.Kitchen;
+import com.demerson.SpringFood.domain.repository.KitchenRepository;
+import com.demerson.SpringFood.infrastructure.repository.kitchenRepositoryImpl;
 
 public class newKitchenMain {
 	public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class newKitchenMain {
 				.web(WebApplicationType.NONE)
 				.run(args);
 
-		registrationKitchen registrationKitchen = applicationContext.getBean(registrationKitchen.class);
+		KitchenRepository registrationKitchen = applicationContext.getBean(KitchenRepository.class);
 
 		 Kitchen kitchen1 = new Kitchen();
 		 kitchen1.setName("Brasileira");
