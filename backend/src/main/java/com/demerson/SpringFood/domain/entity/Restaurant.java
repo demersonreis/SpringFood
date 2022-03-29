@@ -8,10 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_restaurant")
+@Table(name = "restaurant")
 public class Restaurant {
 
 	@Id
@@ -23,6 +25,10 @@ public class Restaurant {
 
 	@Column(name = "shipping_fee")
 	private BigDecimal shippingFee;
+	
+	@ManyToOne
+	@JoinColumn(name = "kitchen_id")
+	private Kitchen kitchen;
 
 	public Long getId() {
 		return id;
@@ -46,6 +52,14 @@ public class Restaurant {
 
 	public void setShippingFee(BigDecimal shippingFee) {
 		this.shippingFee = shippingFee;
+	}
+	
+	public Kitchen getKitchen() {
+		return kitchen;
+	}
+
+	public void setKitchen(Kitchen kitchen) {
+		this.kitchen = kitchen;
 	}
 
 	@Override
