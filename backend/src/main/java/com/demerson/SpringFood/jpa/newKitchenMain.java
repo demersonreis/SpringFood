@@ -27,9 +27,9 @@ public class newKitchenMain {
 		 Kitchen kitchen3 = new Kitchen();
 		 kitchen3.setName("Brasileira_02");
 		 
-		 kitchen1 = registrationKitchen.newKitchen(kitchen1);
-		 kitchen2 =  registrationKitchen.newKitchen(kitchen3);
-		 kitchen3 = registrationKitchen.newKitchen(kitchen3);
+		 kitchen1 = registrationKitchen.newKitchenByUpdate(kitchen1);
+		 kitchen2 =  registrationKitchen.newKitchenByUpdate(kitchen3);
+		 kitchen3 = registrationKitchen.newKitchenByUpdate(kitchen3);
 		
 		 System.out.printf("%d - %s\n", kitchen1.getId(), kitchen1.getName());
 		 System.out.printf("%d - %s\n", kitchen2.getId(), kitchen2.getName());

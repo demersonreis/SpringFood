@@ -26,7 +26,7 @@ public class registrationKitchen {
 	}
 
 	@Transactional
-	public Kitchen newKitchen(Kitchen kitchen) {
+	public Kitchen newKitchenByUpdate(Kitchen kitchen) {
 		return manager.merge(kitchen);
 
 	}
