@@ -20,10 +20,14 @@ public class registrationKitchen {
 
 		return manager.createQuery("from Kitchen", Kitchen.class).getResultList();
 	}
-    
+
+	public Kitchen kitchenFindById(Long id) {
+          return manager.find(Kitchen.class, id);
+	}
+
 	@Transactional
 	public Kitchen newKitchen(Kitchen kitchen) {
 		return manager.merge(kitchen);
-		
+
 	}
 }
