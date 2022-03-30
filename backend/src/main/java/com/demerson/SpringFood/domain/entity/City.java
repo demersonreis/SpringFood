@@ -10,45 +10,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "kitchen")
-public class Kitchen {
-
+@Table(name = "city")
+public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name", nullable = false)
 	private String name;
-	
-	
-	public Kitchen() {}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -58,7 +48,7 @@ public class Kitchen {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Kitchen other = (Kitchen) obj;
+		City other = (City) obj;
 		return Objects.equals(id, other.id);
 	}
 	

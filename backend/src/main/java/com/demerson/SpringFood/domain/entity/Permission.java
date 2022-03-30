@@ -10,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "kitchen")
-public class Kitchen {
-
+@Table(name = "permission")
+public class Permission {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,35 +20,37 @@ public class Kitchen {
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	
-	public Kitchen() {}
-
+	@Column(name = "description", nullable = false)
+	private String description;
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -58,9 +60,10 @@ public class Kitchen {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Kitchen other = (Kitchen) obj;
+		Permission other = (Permission) obj;
 		return Objects.equals(id, other.id);
 	}
 	
 	
+
 }
