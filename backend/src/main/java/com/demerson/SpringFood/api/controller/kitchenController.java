@@ -3,10 +3,13 @@ package com.demerson.SpringFood.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demerson.SpringFood.domain.entity.Kitchen;
@@ -24,8 +27,12 @@ public class kitchenController {
 		return kitchenRepository.kitchenFindAll();
 	}
 
+	// @ResponseStatus(value = HttpStatus.CREATED)
 	@GetMapping(value = "/{id}")
-	public Kitchen kitchenById(@PathVariable("id") Long id) {
-		return kitchenRepository.kitchenFindById(id);
+	public ResponseEntity<Kitchen> kitchenById(@PathVariable("id") Long id) {
+		Kitchen kitchen = kitchenRepository.kitchenFindById(id);
+		// return ResponseEntity.status(HttpStatus.OK).body(kitchen);
+
+		return ResponseEntity.ok(kitchen);
 	}
 }
