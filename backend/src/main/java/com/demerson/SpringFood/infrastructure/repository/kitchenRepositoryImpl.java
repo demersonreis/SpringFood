@@ -29,7 +29,6 @@ public class kitchenRepositoryImpl implements KitchenRepository {
 	}
 
 	@Transactional
-	@Override
 	public Kitchen newKitchenByUpdate(Kitchen kitchen) {
 		return manager.merge(kitchen);
 

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -18,11 +17,10 @@ public class Kitchen {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonIgnore
 	private Long id;
      
 	@JsonProperty(value = "Nome Cozinha:")
-	@Column(name = "name", nullable = false)
+	@Column(name = "name")
 	private String name;
 	
 	

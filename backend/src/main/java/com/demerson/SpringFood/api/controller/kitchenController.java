@@ -2,12 +2,16 @@ package com.demerson.SpringFood.api.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +40,21 @@ public class kitchenController {
 			return ResponseEntity.ok(kitchen);
 		}
 		return ResponseEntity.notFound().build();
+	}
+
+	@PostMapping
+	@ResponseStatus(value = HttpStatus.CREATED)
+	public Kitchen newKitchen(@RequestBody Kitchen kitchen) {
+		return kitchenRepository.newKitchenByUpdate(kitchen);
+	}
+
+	@PutMapping(value = "/{id}")
+	@ResponseStatus(value = HttpStatus.CREATED)
+	public ResponseEntity<Kitchen> updateKitchen(@PathVariable Long id, @RequestBody Kitchen kitchen) {
+		Kitchen upadatekitchen = kitchenRepository.kitchenFindById(id);
+		BeanUtils.copyProperties(kitchen, upadatekitchen);
+		kitchenRepository.newKitchenByUpdate(upadatekitchen);	
+		return ResponseEntity.ok(upadatekitchen);
 
 	}
 }
