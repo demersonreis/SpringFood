@@ -7,6 +7,6 @@ import com.demerson.SpringFood.domain.entity.Restaurant;
 
 public interface RestaurantRepository  {
    
-	List<Restaurant> RestaurantFindAll();
-	
+	List<Restaurant> RestaurantFindAll();	
+	 Restaurant newRestaurant(Restaurant restaurant);
 }

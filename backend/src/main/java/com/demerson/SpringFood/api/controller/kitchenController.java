@@ -51,10 +51,12 @@ public class kitchenController {
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public ResponseEntity<Kitchen> updateKitchen(@PathVariable Long id, @RequestBody Kitchen kitchen) {
+		
 		Kitchen upadatekitchen = kitchenRepository.kitchenFindById(id);
 		BeanUtils.copyProperties(kitchen, upadatekitchen);
+		
 		kitchenRepository.newKitchenByUpdate(upadatekitchen);	
+		
 		return ResponseEntity.ok(upadatekitchen);
-
 	}
 }

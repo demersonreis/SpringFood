@@ -1,5 +1,6 @@
 package com.demerson.SpringFood.domain.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "state")
-public class State {
+public class State  implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,7 @@ public class State {
 	@Column(name = "name", nullable = false)
 	private String name;
 
+	@Id
 	public Long getId() {
 		return id;
 	}

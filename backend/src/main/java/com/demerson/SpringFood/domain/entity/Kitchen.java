@@ -1,5 +1,6 @@
 package com.demerson.SpringFood.domain.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -13,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "kitchen")
-public class Kitchen {
+public class Kitchen implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +26,6 @@ public class Kitchen {
 	private String name;
 	
 	
-	public Kitchen() {}
-
-
 	public Long getId() {
 		return id;
 	}

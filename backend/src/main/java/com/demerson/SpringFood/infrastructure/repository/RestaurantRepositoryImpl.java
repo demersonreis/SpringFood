@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demerson.SpringFood.domain.entity.Kitchen;
 import com.demerson.SpringFood.domain.entity.Restaurant;
 import com.demerson.SpringFood.domain.entity.Restaurant;
 import com.demerson.SpringFood.domain.repository.RestaurantRepository;
@@ -24,4 +25,13 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 	public List<Restaurant> RestaurantFindAll() {
 		return manager.createQuery("from Restaurant", Restaurant.class).getResultList();
 	}
+	
+	@Transactional
+	public Restaurant newRestaurant (Restaurant restaurant) {
+		return manager.merge(restaurant);
+
+	}
+	
+	
+	
 }

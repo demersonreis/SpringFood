@@ -27,7 +27,7 @@ public class Restaurant {
 	private BigDecimal shippingFee;
 	
 	@ManyToOne
-	@JoinColumn(name = "kitchen_id",  nullable = false)
+	@JoinColumn(name = "kitchen_id")
 	private Kitchen kitchen;
 
 	public Long getId() {
