@@ -21,11 +21,12 @@ public class Kitchen implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
      
-	@JsonProperty(value = "Nome Cozinha:")
+	//@JsonProperty(value = "Nome Cozinha:")
 	@Column(name = "name")
 	private String name;
 	
 	
+	@Id
 	public Long getId() {
 		return id;
 	}

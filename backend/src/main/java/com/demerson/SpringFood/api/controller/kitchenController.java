@@ -42,11 +42,13 @@ public class kitchenController {
 		return ResponseEntity.notFound().build();
 	}
 
+	
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Kitchen newKitchen(@RequestBody Kitchen kitchen) {
 		return kitchenRepository.newKitchenByUpdate(kitchen);
 	}
+	
 
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.CREATED)
