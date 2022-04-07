@@ -21,7 +21,7 @@ public class deleteKitchenMain {
 		Kitchen kitchen1 = new Kitchen();
 		kitchen1.setId(2L);
 
-		 registrationKitchen.deleteKitchen(kitchen1);
+		// registrationKitchen.deleteKitchen(kitchen1);
 
 	}
 }

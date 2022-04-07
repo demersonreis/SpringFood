@@ -12,5 +12,5 @@ public interface KitchenRepository  {
 	 
 	 Kitchen newKitchenByUpdate(Kitchen kitchen);
 	 
-	 void deleteKitchen(Kitchen kitchen);
+	 void deleteKitchen(Long id);
 }

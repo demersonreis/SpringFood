@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demerson.SpringFood.domain.entity.Kitchen;
+import com.demerson.SpringFood.domain.exception.entityNotFound;
+import com.demerson.SpringFood.domain.exception.entityUseException;
 import com.demerson.SpringFood.domain.repository.KitchenRepository;
+import com.demerson.SpringFood.domain.service.KitchenService;
 
 @RestController
 @RequestMapping(value = "/kitchens", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,6 +30,9 @@ public class kitchenController {
 
 	@Autowired
 	private KitchenRepository kitchenRepository;
+
+	@Autowired
+	private KitchenService kitchenService;
 
 	@GetMapping()
 	public List<Kitchen> findAll() {
@@ -47,7 +53,7 @@ public class kitchenController {
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Kitchen newKitchen(@RequestBody Kitchen kitchen) {
-		return kitchenRepository.newKitchenByUpdate(kitchen);
+		return kitchenService.newKitchenByUpdate(kitchen);
 	}
 
 	@PutMapping(value = "/{id}")
@@ -64,14 +70,13 @@ public class kitchenController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Kitchen> deleteKitchen(@PathVariable Long id) {
 		try {
-			Kitchen kitchen = kitchenRepository.kitchenFindById(id);
+			kitchenService.deleteKitchen(id);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
-			if (kitchen != null) {
-				kitchenRepository.deleteKitchen(kitchen);
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-			}
+		} catch (entityNotFound e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		} catch (DataIntegrityViolationException e) {
+		} 
+		catch (entityUseException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
